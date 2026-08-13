@@ -50,7 +50,7 @@ For relationships between *different-sized* elements, use the golden ratio (1.61
 
 - **8–13px**: micro spacing (within a component, icon gaps, inline code padding)
 - **21px**: standard spacing (between paragraphs, list items)
-- **34px**: moderate spacing (between a code block and surrounding text, between subsections)
+- **34px**: moderate spacing (between a code bag and surrounding text, between subsections)
 - **55px**: section spacing (between the end of one section and the heading of the next)
 - **89px**: major spacing (above the first section heading after the hero, before footer)
 
@@ -72,7 +72,7 @@ For longform articles, **680px** (at 18–19px body text) yields ~65 characters 
 
 **Wide elements** should not jump to full container width. Use a stepped system:
 - Narrow (content column): 680px — body text
-- Medium (content × 1.25): ~850px — code blocks, tables, diagrams
+- Medium (content × 1.25): ~850px — code bags, tables, diagrams
 - Wide (content × 1.618): ~1100px — hero, full-bleed images, dramatic pull quotes
 
 ## Applying the System
@@ -94,7 +94,7 @@ Use the Fibonacci sequence anchored to your 8-point grid: 8, 13, 21, 34, 55, 89.
 --space-xs: 8px;    /* micro: icon gaps, inline padding */
 --space-sm: 13px;   /* tight: within components */
 --space-md: 21px;   /* standard: between paragraphs */
---space-lg: 34px;   /* moderate: around code blocks, between subsections */
+--space-lg: 34px;   /* moderate: around code bags, between subsections */
 --space-xl: 55px;   /* section: between major sections */
 --space-2xl: 89px;  /* major: hero-to-content, before footer */
 ```
@@ -107,7 +107,7 @@ Content column at ~680px. Medium breakout at ~850px. Wide breakout at ~1100px. U
 
 - **Heading + its content** = one unit. Space between them: `--space-xs` (8px) to `--space-sm` (13px).
 - **Between paragraphs**: `--space-md` (21px).
-- **Around a breakout element** (code block, image, table): `--space-lg` (34px) above and below.
+- **Around a breakout element** (code bag, image, table): `--space-lg` (34px) above and below.
 - **Before a new section heading**: `--space-xl` (55px).
 - **After the hero, before the first body content**: `--space-2xl` (89px).
 
