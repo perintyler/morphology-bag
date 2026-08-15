@@ -1,2 +1,2 @@
 name: morphology
-description: Spatial proportion systems for layout — 8dp grid, golden ratio, Fibonacci spacing
+description: Spatial proportion systems for layout — derive a type scale, spacing scale and column widths from one decision using the 8dp grid, golden ratio and Fibonacci.

@@ -6,6 +6,25 @@ prompt: |-
 
   A system for spacing and proportion that replaces arbitrary pixel values with mathematically grounded ratios. Produces layouts that feel "right" because they're built on the same proportional relationships found in nature, typography, and the best design systems.
 
+  **The point is the derivation, not the numbers.** Everything below follows from
+  ONE decision — the body font size. Pick that, and the type scale, the spacing
+  scale and the column widths all fall out of it:
+
+  ```
+  body size  (the one decision)
+    -> type scale = base x 1.618^n        (phi per level)
+    -> spacing    = 8, 13, 21, 34, 55, 89 (Fibonacci approximates phi)
+    -> measure    = the width giving 45-90 characters
+    -> medium     = measure x 1.25
+    -> wide       = measure x 1.618
+  ```
+
+  So 680 / 850 / 1100 is not three numbers to memorise — it is one decision
+  (19px body) run through the system. Change the body size and re-derive; the
+  result stays internally coherent because the ratios hold.
+
+  Treat the tables below as worked examples of the derivation, not as constants.
+
   ## When to Use This Skill
 
   Load this skill when you're generating any HTML layout — articles, landing pages, dashboards, reports — and need to determine spacing, column widths, font sizes, or element proportions. It provides a concrete system so you never have to guess at padding or margin values.
@@ -49,7 +68,7 @@ prompt: |-
 
   - **8–13px**: micro spacing (within a component, icon gaps, inline code padding)
   - **21px**: standard spacing (between paragraphs, list items)
-  - **34px**: moderate spacing (between a code bag and surrounding text, between subsections)
+  - **34px**: moderate spacing (between a code block and surrounding text, between subsections)
   - **55px**: section spacing (between the end of one section and the heading of the next)
   - **89px**: major spacing (above the first section heading after the hero, before footer)
 
@@ -71,7 +90,7 @@ prompt: |-
 
   **Wide elements** should not jump to full container width. Use a stepped system:
   - Narrow (content column): 680px — body text
-  - Medium (content × 1.25): ~850px — code bags, tables, diagrams
+  - Medium (content × 1.25): ~850px — code blocks, tables, diagrams
   - Wide (content × 1.618): ~1100px — hero, full-bleed images, dramatic pull quotes
 
   ## Applying the System
@@ -93,7 +112,7 @@ prompt: |-
   --space-xs: 8px;    /* micro: icon gaps, inline padding */
   --space-sm: 13px;   /* tight: within components */
   --space-md: 21px;   /* standard: between paragraphs */
-  --space-lg: 34px;   /* moderate: around code bags, between subsections */
+  --space-lg: 34px;   /* moderate: around code blocks, between subsections */
   --space-xl: 55px;   /* section: between major sections */
   --space-2xl: 89px;  /* major: hero-to-content, before footer */
   ```
@@ -106,7 +125,7 @@ prompt: |-
 
   - **Heading + its content** = one unit. Space between them: `--space-xs` (8px) to `--space-sm` (13px).
   - **Between paragraphs**: `--space-md` (21px).
-  - **Around a breakout element** (code bag, image, table): `--space-lg` (34px) above and below.
+  - **Around a breakout element** (code block, image, table): `--space-lg` (34px) above and below.
   - **Before a new section heading**: `--space-xl` (55px).
   - **After the hero, before the first body content**: `--space-2xl` (89px).
 
@@ -130,6 +149,36 @@ prompt: |-
   4. **Width jumps without mediation** — Going from 680px body text directly to a 1100px element and back. Use the medium step (850px) or add a background color change to signal the transition.
 
   5. **Ignoring the reading column on wide screens** — At 1440px, 680px of text leaves 760px of white space. That's fine — it's the magazine convention. Don't stretch text to fill the screen.
+
+  ## When NOT to use this
+
+  The golden-ratio research is explicit about its own limits:
+
+  - Skip it for extremely minimalist or deliberately abstract work, where
+    proportional harmony isn't the goal.
+  - **Never let it override usability or readability.** Accessibility and
+    comprehension outrank harmony every time.
+
+  One number here is not taste: **reading measure**. 45-90 characters per line is
+  measured reading research, and violating it costs comprehension. Everything
+  else is a defensible default you may override with reason.
+
+  ## Heuristics, not laws
+
+  These are useful when reviewing a draft, and harmful when enforced mechanically:
+
+  - "Only 1 distinct width = monotonous, 3 = ideal" — a good prompt to ask whether
+    the piece has enough variety. But a deliberately single-measure design is a
+    legitimate choice, not a defect.
+  - "More than 2 full-bleed elements = overuse" — full-bleed reads as an event
+    because it is rare. If a piece genuinely has three ruptures, it has three.
+  - "Phi (1.618) type scale" — a strong default. A 1.2 (minor third) or 1.25
+    (major third) scale is equally professional and reads as more restrained.
+    What matters is choosing a ratio and holding it, so levels are
+    distinguishable and consistent.
+
+  Judge the result by looking at it. A layout that satisfies every ratio and
+  reads badly is a failed layout.
 
   ## Reference
 
